@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head> 
+    <title>Getting Started: Serving Web Content</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="css/styleshome.css">
+</head>
+<body>
+	<div >
+	<h1 class="titulo">REGISTRO DE USUARIOS</h1>
+	</div>
+	<div class="grupoFormulario">
+	<form action="#" th:action="@{/crear}" th:object="${usuario}" method="post" class="formulario">  
+	<div class="campoGrupo">
+		<label class="labelCampo" for="primerNombre">Primer Nombre:</label>
+		<input class="campo" type="text" th:field="*{primerNombre}" name="primerNombre" placeholder="Primer Nombre"/>
+	</div>
+ 
+    <div class="campoGrupo">
+		<label class="labelCampo" for="segundoNombre">Segundo Nombre:</label>
+		<input class="campo" type="text" th:field="*{segundoNombre}" name="segundoNombre" placeholder="Segundo Nombre"/>
+	</div>
+ 
+        <div class="campoGrupo">
+		<label class="labelCampo" for="primerApellido">Primer Apellido:</label>
+		<input class="campo" type="text" th:field="*{primerApellido}" name="primerApellido" placeholder="Primer Apellido"/>
+	</div>
+
+        <div class="campoGrupo">
+		<label class="labelCampo" for="segundoApellido">Segundo Apellido:</label>
+		<input class="campo" type="text" th:field="*{segundoApellido}" name="segundoApellido" placeholder="Segundo Apellido"/>
+	</div>
+
+        <div class="campoGrupo">
+		<label class="labelCampo" for="numeroDocumento">Número Documento:</label>
+		<input class="campo" type="number" th:field="*{numeroDocumento}" name="numeroDocumento" placeholder="Número Documento"/>
+	</div>
+
+	<div class="campoGrupo">
+	    <label class="labelCampo" for="tipoDocumento">Tipo de Documento:</label>
+	    <select class="form-control seleccionador" id="dropDownList1" name="IDParametroDocumento" th:field="*{IDParametroDocumento}">
+	    	<option value="0" class="defecto">Seleccione una opción</option>
+	    	<option th:each="parametrodo : ${parametrodoc}"  th:value="${parametrodo.id}"  th:text="${parametrodo.tipoDocumento}"></option>
+		</select>
+	</div>
+
+   	<div class="campoGrupo">
+	    <label class="labelCampo" for="genero">Genero:</label>
+	    <select class="form-control seleccionador" id="dropDownList2" name="IDParametroGenero" th:field="*{IDParametroGenero}">
+	    	<option value="0" class="defecto">Seleccione una opción</option>
+	    	<option th:each="parametroge : ${parametrogen}" th:value="${parametroge.id}"  th:text="${parametroge.genero}"></option>
+		</select>
+	</div>
+
+        <div class="campoGrupo">
+		<label class="labelCampo" for="nombreUsuario">Nombre Usuario:</label>
+		<input class="campo" type="text" th:field="*{nombreUsuario}" name="nombreUsuario" placeholder="Nombre Usuario"/>
+	</div>
+ 
+        <div class="campoGrupo">
+		<label class="labelCampo" for="correoElectronico">Correo Electronico:</label>
+		<input class="campo" type="text" th:field="*{correoElectronico}" name="correoElectronico" placeholder="Correo Electronico"/>
+	</div>
+ 	<div class="submitboton">
+ 	<input class="boton" type="submit" value="Crear usuario"/>  
+ 	</div>
+    
+    </form>  
+	</div>
+	
+	<div class="mensajeError">
+		<p th:text="${mensajeError}" />
+	</div>
+		<div >
+		<p class="enlaces"><a href="/">Inicio</a></p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head> 
+    <title>Getting Started: Serving Web Content</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="css/styleshome.css">
+</head>
+<body>
+	<div >
+	<h1 class="titulo">BUSQUEDA DE USUARIOS</h1>
+	</div>
+	<div class="grupoFormulario">
+	<form action="#" th:action="@{/consultar}" th:object="${usuario}" method="post" class="formulario">  
+
+    <div class="campoGrupo">
+		<label class="labelCampo" for="numeroDocumento">Número Documento:</label>
+		<input class="campo" type="number" th:field="*{numeroDocumento}" name="numeroDocumento" placeholder="Número Documento"/>
+	</div>
+
+
+    <div class="campoGrupo">
+		<label class="labelCampo" for="nombreUsuario">Nombre Usuario:</label>
+		<input class="campo" type="text" th:field="*{nombreUsuario}" name="nombreUsuario" placeholder="Nombre Usuario"/>
+	</div>
+ 
+ 	<div class="submitboton">
+ 	<input class="boton" type="submit" value="Buscar usuario" th:name="submit" th:value="consultar"/>  
+ 	</div>
+    
+    </form>  
+	</div>
+	
+	<div class="mensajeError">
+		<p th:text="${mensajeError}" />
+	</div>
+	<div th:if="${encontrado}">
+		<div >
+			<h1 class="titulo">RESULTADO DE BUSQUEDA</h1>
+		</div>
+		<div class="grupoFormulario" >
+			<form action="#" class="formulario">
+			
+				<div class="campoGrupo">
+					<label class="labelCampo" for="nombreCompleto">Nombre Completo:</label>
+					<input class="campo" disabled type="text" th:value="${consultado.nombreCompleto}" name="nombreCompleto" placeholder=""/>
+				</div>
+			
+				<div class="campoGrupo">
+					<label class="labelCampo" for="tipoDocumento">Tipo de documento:</label>
+					<input class="campo" disabled type="text" th:field="${consultado.tipoDocumento}" name="tipoDocumento" placeholder=""/>
+				</div>
+			
+			    <div class="campoGrupo">
+					<label class="labelCampo" for="numeroDocumento">Número Documento:</label>
+					<input class="campo" disabled type="number" th:field="${consultado.numeroDocumento}" name="numeroDocumento" placeholder=""/>
+				</div>
+			
+				<div class="campoGrupo">
+					<label class="labelCampo" for="genero">Genero:</label>
+					<input class="campo" disabled type="text" th:field="${consultado.genero}" name="genero" placeholder=""/>
+				</div>
+			
+			</form>
+			
+			<form action="#" th:action="@{|/borrar/${idborrar}|}" th:object="${consultado}" method="post" class="formulario">
+				<div class="submitboton">
+					<button class="boton" type="submit" th:name="accion" >Eliminar Usuario </button>
+		 			 
+		 		</div>
+			</form>
+		
+		</div>
+	</div>
+	<div >
+		<p class="enlaces"><a href="/">Inicio</a></p>
+	</div>
+	
+</body>
+</html>
